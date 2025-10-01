@@ -8,6 +8,9 @@ const createGridRow = function () {
   for (let i = 0; i < GRID_SIZE; i++) {
     const square = document.createElement('div');
     square.classList.add('square');
+    square.addEventListener('mouseenter', function () {
+      square.classList.add('hovered');
+    })
     row.appendChild(square);
   }
 
