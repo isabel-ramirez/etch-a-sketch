@@ -4,7 +4,9 @@ const resizeBtn = document.querySelector('#resize-btn');
 const clearBtn = document.querySelector('#clear-btn');
 
 resizeBtn.addEventListener('click', function () {
-  GRID_SIZE = Number(prompt('Enter number of pixels (max is 100):')); 
+  do {
+    GRID_SIZE = Number(prompt('Enter number of pixels (max is 100):')); 
+  } while (!GRID_SIZE || GRID_SIZE < 0 || GRID_SIZE > 100);
   removeGrid();
   drawGrid();
 })
