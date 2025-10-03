@@ -14,9 +14,16 @@ clearBtn.addEventListener('click', function () {
 
   rows.forEach(row => {
     const squares = [...row.children];
-    squares.forEach(square => square.classList.remove('hovered'));
+    squares.forEach(square => square.style.backgroundColor = 'rgb(255, 255, 255)');
   })
 })
+
+const getRandomRGB = function () {
+  const red = Math.trunc(Math.random() * 255) + 1;
+  const green = Math.trunc(Math.random() * 255) + 1;
+  const blue = Math.trunc(Math.random() * 255) + 1;
+  return `rgb(${red}, ${green}, ${blue})`;
+}
 
 const createGridRow = function () {
   const row = document.createElement('div');
@@ -26,7 +33,7 @@ const createGridRow = function () {
     const square = document.createElement('div');
     square.classList.add('square');
     square.addEventListener('mouseenter', function () {
-      square.classList.add('hovered');
+      square.style.backgroundColor = getRandomRGB();
     })
     row.appendChild(square);
   }
