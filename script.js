@@ -16,15 +16,17 @@ clearBtn.addEventListener('click', function () {
 
   rows.forEach(row => {
     const squares = [...row.children];
-    squares.forEach(square => square.style.backgroundColor = 'rgb(255, 255, 255)');
+    squares.forEach(square => square.style.backgroundColor = 'rgba(255, 255, 255, 0)');
   })
 })
 
-const getRandomRGB = function () {
+const getRandomRGBA = function (oldRGBA) {
   const red = Math.trunc(Math.random() * 255) + 1;
   const green = Math.trunc(Math.random() * 255) + 1;
   const blue = Math.trunc(Math.random() * 255) + 1;
-  return `rgb(${red}, ${green}, ${blue})`;
+  const oldAlpha = oldRGBA ? Number(oldRGBA.slice(5, -1).split(', ').at(-1)) : 0;
+
+  return `rgba(${red}, ${green}, ${blue}, ${oldAlpha + 0.1})`;
 }
 
 const createGridRow = function () {
@@ -35,7 +37,8 @@ const createGridRow = function () {
     const square = document.createElement('div');
     square.classList.add('square');
     square.addEventListener('mouseenter', function () {
-      square.style.backgroundColor = getRandomRGB();
+      const currentColor = square.style.backgroundColor;
+      square.style.backgroundColor = getRandomRGBA(currentColor);
     })
     row.appendChild(square);
   }
