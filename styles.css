@@ -37,3 +37,9 @@ body {
   flex: 1;
 }
 
+button {
+  font-size: 1em;
+  margin: 8px 8px 8px 0px;
+  padding: 8px;
+  border-radius: 8px;
+}
